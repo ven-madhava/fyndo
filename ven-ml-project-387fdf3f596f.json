@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ven-ml-project",
+  "private_key_id": "387fdf3f596f5ba7e135739e98a69e3514342415",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDhrQw99yAoB7y+\nESLv5D8/igCl/ZZVhgkKWBVstoqiGkIQFGFob2Dzki0GuRCiTWyK9s2VRGuL3B6O\naHTQ5Fl4xEsnPWU1UyWW5WLB0lBraHRw58zZ9/k0CUtC95JB5yqvxRgoPa2e3qJ9\nPnOikWyzbsbuLoNzsPRS16oW1lcnjOY/xSyGYxqB5ejtGvhop0t1yw2ZioXPMDoR\nC5Al8RA2ln6BMtUUU4pdQO5vWB3RqMzkemweE/aVEJ0VREOBWZBfJdLHdW0HudFf\nPkH23Nfar23SAGXMPh7ch9u3zqYtv9ZdR9HQfopEYEI1aBrNR5gkGxjFlrgK210d\nVcvCXHLDAgMBAAECggEAIK+DmmX0jlewiobI3J3eW0GNnn0ADRsArDLdx4UYxymu\nb83D3fBjxmNhihu7wQYdtnLQi9IBEZysAEw4vxiTrN4hVGmcAwEr7JMEnrXrV+Ml\nGkU4cklsGpFOCUD6OflVQWf2e72TK/Nq7WDiNqWBbOuafFzYRSVX/bemtvAMZ3nH\nEtlhkBDPqzjFaJmpU+Cc5aAVonhVfozPs0pB8hyUToH4NFQOFINtL2Y48n7B0d3A\n5q60ZqH/lxTjeTeuTlsnnYEZVTFbG9EJ6wEZqnNwtPYI3stOTTr0yMnC5L3GmxtB\nlMAK+bYfbM0kdzkHzsh8Bubbm5evs8rZs/INRq7XgQKBgQD+TtX8vFRiIkBXvGwp\nak3MC1SGLUg6lK6m0pULmigcG9RmBl5JQKd2Ep8Ik2eV97hys8k2FvhLMBmY4oGm\nmkGT0jp1v+7/QVLWzXM51pwv/WFBphy3Qq5Y5J7tGCiV29FQb66erQMCdJA3p820\n58BYaJ6na1RxPUhLthyAVs0xsQKBgQDjLXFjGe7Ld7Ezg1gg8OuL+j2yLrbOObBV\npD/KAtEWU8P23fccXwNPApWXFk+QkqQ41+rYBya4onGbf2DHPqcyy+b4vyw7lDvj\nRCVPOzFcA4doWKert87v1TYu2lFJlKjQXYjPMbFwpYIeEdL0Fn+Df21FmE8iI0U+\n9hBgAWb0swKBgQCjWCHsj08oJVXsxNM4mtZTnGdzM7y0G/I+pv4jEKZ4v4ti6O5A\n4O1vUrChwoSDeDUaP86bFo/vQ3r9j2e1illayGrSXTD29Y9u91HusaFq1bZVg4vo\nTkVMRbSrF5xh/Wpp3wJrWzeWqSZFCVyAuWb7ol9dq/v2LGW2c8fEy3xLUQKBgC77\nzQGD8YEfJgTTWzyk1vJCNNRPGPuZrsBnkdHDt154wISj72FsvRBwJmPy902dJl2j\nOiynffidkAVq2KccbBPzW7eCQjGoPKKKC3VRdqnjCPQpsbOv9hpf7C7QdBNVrXw6\ne/rt+hakBD8XzJsys/iMOBs2ntcemEmnNkfEwnhFAoGBALQMC/wVPGwvPOPU8rFx\nJhrvC1p9FgrS4E51wHDQSS9DZ2YgXoBqOBFS7Lvg3e+3GMD9iffr/XOmhlXUHoOy\n4/GtyxVhH23Mk+4gHspiePiB1HEi2XXOw7XEqEcQsGg9QDPwCVt+9sS/SDYRtf/9\nCC245qs9OUVfJGrqG5ayRYjC\n-----END PRIVATE KEY-----\n",
+  "client_email": "local-cloud-storage-test-user@ven-ml-project.iam.gserviceaccount.com",
+  "client_id": "103526791067400699736",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/local-cloud-storage-test-user%40ven-ml-project.iam.gserviceaccount.com"
+}
