@@ -3,7 +3,7 @@
 
 # # 0. Imports and Settings
 
-# In[1]:
+# In[2]:
 
 
 # Necessary imports
@@ -17,8 +17,6 @@ import csv
 import collections
 from collections import Counter
 import time
-import sqlalchemy
-from sqlalchemy import create_engine
 from tqdm import tqdm
 from datetime import datetime
 
@@ -33,16 +31,16 @@ import requests
 import json
 
 
-# gcloud storage related imports
-# ------------------------------
-import os
-from google.cloud import storage
-
+# remembering commands
+# 1. cd Documents/pmate2/pmate2_env/notebooks/fyndo
+# 2. jupyter nbconvert --to script fyndo_dbapis.ipynb
+# 3. clean up py file
+# 4. 
 
 
 # ## 0. Local / VM set up
 
-# In[2]:
+# In[3]:
 
 
 'SWITCH BETWEEN LOCAL AND VM HERE'
@@ -52,37 +50,33 @@ from google.cloud import storage
 global vm_or_local
 vm_or_local = 'vm'
 
-# ops
-# ---
+# setting api text file path
+# --------------------------
+global api_file_path
 if vm_or_local == 'local':
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/venkateshmadhava/Documents/pmate2/pmate2_env/notebooks/ven-ml-project-387fdf3f596f.json"
+    api_file_path = '/Users/venkateshmadhava/Documents/fyndo_20/fyndo_api_key.txt'
 else:
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/venkateshmadhava/fyndo/ven-ml-project-387fdf3f596f.json"
+    api_file_path = '/home/venkateshmadhava/files/fyndo_api_key.txt'
+    
 
 
 # ## 1. Codes
 
-# In[3]:
+# In[15]:
 
 
 def get_api_key():
-
-    # 1. Initialising bucket details
-    # ------------------------------
-    bucket_name = 'ven-ml-project.appspot.com'
-    storage_client = storage.Client()
-    bucket = storage_client.get_bucket(bucket_name)
-    destination_blob_name = 'admin/secret_key_vm_apis.txt'
-    blob = bucket.blob(destination_blob_name)
-
-    # 2. Getting content and processing
-    # ---------------------------------
-    key = blob.download_as_string().decode()
+    
+    
+    # getting key from local file
+    # ---------------------------
+    f = open(api_file_path, 'r')
+    key = f.read()
 
     return key
 
 
-# In[4]:
+# In[5]:
 
 
 # we now need specific generice functions for various db ops
@@ -182,7 +176,7 @@ def run_insert_update_delete_query_api_function(query):
     return out_d
 
 
-# In[5]:
+# In[6]:
 
 
 ## 1.
@@ -263,7 +257,7 @@ class exAPI_run_insert_update_delete_query(Resource):
             return 'API keys not initialsed. error: ' + str(e), 401
 
 
-# In[6]:
+# In[7]:
 
 
 # we now need specific generice functions for various db ops
@@ -400,7 +394,7 @@ def run_select_query_api_function(table_name,query,chunk_size):
     return out_d
 
 
-# In[7]:
+# In[8]:
 
 
 ## 1.
@@ -487,7 +481,7 @@ class exAPI_run_select_query(Resource):
 
 # ## 2. running apis
 
-# In[ ]:
+# In[8]:
 
 
 # necessary set ups
