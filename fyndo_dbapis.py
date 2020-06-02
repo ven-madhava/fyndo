@@ -507,7 +507,7 @@ class exAPI_run_select_query(Resource):
             return 'API keys not initialsed. error: ' + str(e) , 401
 
 
-# In[10]:
+# In[93]:
 
 
 def return_search_score(input_q_list):
@@ -573,17 +573,19 @@ def return_search_score(input_q_list):
     # building final score -- which will be an avg
     # --------------------------------------------
     temp_s = 0
+    max_s = 0
     for keys in d:
         temp_s += sum(d[keys]['seq'])
-    
-    
+        if max(d[keys]['seq']) > max_s:
+            max_s = max(d[keys]['seq'])
+     
     # 2. final return
     # ----------------
-    return temp_s
+    return temp_s, max_s
             
 
 
-# In[17]:
+# In[94]:
 
 
 # the main function has to have 
@@ -605,6 +607,7 @@ def run_search_query_api_function(table_name,query,chunk_size,feild_names,search
     
     # 0. inits
     # --------
+    eligible_threshold = 0.5
     out_dict = {}
     feild_names = feild_names.split(',')
     
@@ -637,6 +640,7 @@ def run_search_query_api_function(table_name,query,chunk_size,feild_names,search
             pool = ThreadPool(10)
 
             # starmap accepts a sequence of argument tuples
+            # the reuslts is a tuple in format (temp_s, max_s)
             # ---------------------------------------------
             results = pool.starmap(return_search_score, product(args, repeat = 1))
             
@@ -646,28 +650,31 @@ def run_search_query_api_function(table_name,query,chunk_size,feild_names,search
             pool.join()
             
             # 3. sorting results based on highest score at top
-            # ------------------------------------------------
+            # automatically sorts by the first memer of the tuple
+            # ----------------------------------------------------
             argsort_results = list(reversed(argsort(results)))
             
             # 3.3 looping & assigning
             # will use looping here
             # -----------------------
+            eligible_counter = 0
             for i in range(len(argsort_results)):
-                new_sorted_d[i] = raw_results[argsort_results[i]]
+                if results[argsort_results[i]][1] >= eligible_threshold:
+                    new_sorted_d[eligible_counter] = raw_results[argsort_results[i]]
+                    eligible_counter += 1
                 
-                
-            
+
             # 4. done and final output assignment
             # -----------------------------------
             out_dict['output'] = new_sorted_d
             out_dict['status'] = 'ok'
             
         
-    except:
+    except Exception as e:
         
         # something was not right / or no results to parse
         # -------------------------------------------------
-        out_dict['output'] = 'no results'
+        out_dict['output'] = e
         out_dict['status'] = 'not_ok'
         
         
@@ -681,7 +688,7 @@ def run_search_query_api_function(table_name,query,chunk_size,feild_names,search
     
 
 
-# In[18]:
+# In[12]:
 
 
 ## 3.
@@ -799,7 +806,7 @@ api.add_resource(exAPI_run_search_query, '/run_search_query') # Route
 
 # final step to run
 # -----------------
-global vm_or_local
+#global vm_or_local
 if __name__ == '__main__':
     if vm_or_local == 'local':
         app.run(port='5002') # For local
