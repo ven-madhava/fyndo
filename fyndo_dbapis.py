@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 # coding: utf-8
 
 # # 0. Imports and Settings
@@ -663,11 +663,30 @@ def run_search_query_api_function(table_name,query,chunk_size,feild_names,search
                     new_sorted_d[eligible_counter] = raw_results[argsort_results[i]]
                     eligible_counter += 1
                 
-
-            # 4. done and final output assignment
-            # -----------------------------------
-            out_dict['output'] = new_sorted_d
-            out_dict['status'] = 'ok'
+            
+            # a final sanity
+            # --------------
+            if eligible_counter > 0:
+                
+                # 4. done and final output assignment
+                # -----------------------------------
+                out_dict['output'] = new_sorted_d
+                out_dict['status'] = 'ok'
+                
+            else:
+                
+                # this means that none of the returned results passed eligibility
+                # ---------------------------------------------------------------
+                out_dict['output'] = "Error: No results passed search eligibility."
+                out_dict['status'] = 'not_ok'
+            
+        
+        else:
+            
+            # this means that there were NO ROWS RETURNED IN SEARCH
+            # -----------------------------------------------------
+            out_dict['output'] = "Error: No rows returned to search in."
+            out_dict['status'] = 'not_ok'
             
         
     except Exception as e:
@@ -812,6 +831,24 @@ if __name__ == '__main__':
         app.run(port='5002') # For local
     else:
         app.run(host='0.0.0.0', port=8000) # VM
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:
